@@ -1,37 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>✊ Rock ✋ Paper ✌ Scissors</h1>
-    <div class="choices">
-        <div class="choice" id="rock">
-            <img src="images/rock.png" alt="Rock_image">
-        </div>
-        <div class="choice" id="paper">
-            <img src="images/paper.png" alt="Paper_image">
-        </div>
-        <div class="choice" id="scissors">
-            <img src="images/scissors.png" alt="Scissors_image">
-        </div>
-    </div>
+    <title>Rock Paper Scissors Pro</title>
 
-    <div class="score-board">
-        <div class="score">
-            <p id="user-score">0</p>
-            <p>👤 You</p>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Theme Button -->
+
+    <button id="themeToggle">
+        <i class="fa-solid fa-moon"></i>
+    </button>
+
+    <main class="app">
+
+        <!-- Header -->
+
+        <header>
+
+            <h1>
+                ✊ Rock Paper Scissors Pro
+            </h1>
+
+            <p>
+                Beat the Computer!
+            </p>
+
+        </header>
+
+        <!-- Match Settings -->
+
+        <section class="settings">
+
+            <div>
+
+                <label>Best Of</label>
+
+                <select id="matchSelect">
+
+                    <option value="3">3</option>
+                    <option value="5" selected>5</option>
+                    <option value="7">7</option>
+
+                </select>
+
+            </div>
+
+            <div>
+
+                <button id="resetMatch">
+                    <i class="fa-solid fa-rotate"></i>
+                    Reset Match
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- Battle Area -->
+
+        <section class="battle">
+
+            <div class="player">
+
+                <h2>You</h2>
+
+                <div class="choiceCard">
+
+                    <img id="userChoice" src="images/question1.png" alt="User Choice">
+
+                </div>
+
+            </div>
+
+            <div class="vs">
+
+                VS
+
+            </div>
+
+            <div class="player">
+
+                <h2>Computer</h2>
+
+                <div class="choiceCard">
+
+                    <img id="computerChoice" src="images/question2.png" alt="Computer Choice">
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Choices -->
+
+        <section class="choices">
+
+            <button class="choice" data-choice="rock">
+
+                <img src="images/rock.png" alt="Rock">
+
+                <span>Rock</span>
+
+            </button>
+
+            <button class="choice" data-choice="paper">
+
+                <img src="images/paper.png" alt="Paper">
+
+                <span>Paper</span>
+
+            </button>
+
+            <button class="choice" data-choice="scissors">
+
+                <img src="images/scissors.png" alt="Scissors">
+
+                <span>Scissors</span>
+
+            </button>
+
+        </section>
+
+        <!-- Score -->
+
+        <section class="scoreBoard">
+
+            <div class="card">
+
+                <h3>👤 You</h3>
+
+                <h1 id="userScore">
+                    0
+                </h1>
+
+            </div>
+
+            <div class="card">
+
+                <h3>🤖 Computer</h3>
+
+                <h1 id="computerScore">
+                    0
+                </h1>
+
+            </div>
+
+            <div class="card">
+
+                <h3>🤝 Draws</h3>
+
+                <h1 id="drawScore">
+                    0
+                </h1>
+
+            </div>
+
+        </section>
+
+        <!-- Round -->
+
+        <h2 id="roundInfo">
+
+            Round 1
+
+        </h2>
+
+        <!-- Status -->
+
+        <div id="status">
+
+            Choose your move...
+
         </div>
-        <div class="score">
-            <p id="comp-score">0</p>
-            <p>🤖 Computer</p>
-        </div>
-    </div>
-    <div class="msg-container">
-        <p id="msg">Play your move</p>
-    </div>
+
+        <!-- Match History -->
+
+        <section class="history">
+
+            <h2>
+
+                Match History
+
+            </h2>
+
+            <ul id="historyList">
+
+            </ul>
+
+        </section>
+
+    </main>
+
+    <!-- Toast -->
+
+    <div id="toast"></div>
+
+    <!-- Sounds -->
+
+    <audio id="clickSound" src="sounds/click.mp3"></audio>
+
+    <audio id="winSound" src="sounds/win.mp3"></audio>
+
+    <audio id="loseSound" src="sounds/lose.mp3"></audio>
+
+    <audio id="drawSound" src="sounds/draw.mp3"></audio>
+
     <script src="script.js"></script>
+
 </body>
+
+</html>
